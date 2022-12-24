@@ -24,7 +24,10 @@ global.client = new tmi.Client({
     password: process.env.BOT_OAUTH,
   },
 
-  channels: [process.env.CHANNEL_NAME],
+  channels: [
+    process.env.CHANNEL_NAME,
+    "jeepygmi",
+  ],
 });
 
 global.client.connect();
