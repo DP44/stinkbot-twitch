@@ -6,7 +6,6 @@ class Ping extends Command {
    */
   constructor() {
     super("ping");
-    this.logger.info("test");
   }
 
   /**
