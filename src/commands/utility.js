@@ -6,14 +6,14 @@
 const Command = require("../command");
 
 /**
- * A simple ping command which responds with "pong".
+ * A command which attempts to ping the chat server.
  * @extends Command
  */
 class Ping extends Command {
   constructor() {
     super(
       "ping", 
-      "A simple test command that responds with \"pong\"."
+      "A command which attempts to ping the chat server."
     );
   }
 
@@ -24,7 +24,11 @@ class Ping extends Command {
    * @param {object} args The arguments passed to the command.
    */
   logic(channel, userstate, args) {
-    global.client.say(channel, "pong");
+    global.client.ping().then((data) => {
+      global.client.say(channel, `Received PONG. latency: ${data}`);
+    }).catch((err) => {
+      global.client.say(channel, `PING timed out! (${err})`);
+    });
   }
 }
 
