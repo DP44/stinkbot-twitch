@@ -3,7 +3,7 @@
  * @module handler
  */
 
-const commands = {
+const commandDefinitions = {
   general: require("./commands/general"),
   fun: require("./commands/fun"),
   utility: require("./commands/utility"),
@@ -21,17 +21,17 @@ const initializeCommands = () => {
   // TODO: Find better way of doing this.
   return {
     // General
-    help: new commands.general.Help(),
+    help: new commandDefinitions.general.Help(),
 
     // Fun
-    "8ball": new commands.fun.Eightball(),
+    "8ball": new commandDefinitions.fun.Eightball(),
 
     // Utility
-    ping: new commands.utility.Ping(),
+    ping: new commandDefinitions.utility.Ping(),
 
     // Debug
-    echo: new commands.debug.Echo(),
-    eval: new commands.debug.Eval(),
+    echo: new commandDefinitions.debug.Echo(),
+    eval: new commandDefinitions.debug.Eval(),
   };
 };
 
