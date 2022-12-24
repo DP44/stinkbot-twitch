@@ -1,5 +1,4 @@
 const Command = require("../command");
-const constants = require("../constants");
 
 class Eightball extends Command {
   /**
@@ -24,8 +23,9 @@ class Eightball extends Command {
       return;
     }
 
-    const message = constants.EIGHTBALL_MESSAGES[Math.floor(
-      Math.random() * constants.EIGHTBALL_MESSAGES.length)];
+    const messages = global.config.data.EIGHTBALL_MESSAGES;
+    const message = messages[Math.floor(Math.random() * messages.length)];
+
     global.client.say(channel, `@${userstate.username} ${message}`);
   }
 }

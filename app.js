@@ -1,9 +1,12 @@
 require('dotenv').config();
 
-const tmi = require('tmi.js');
+const Config = require("./src/config");
+global.config = new Config("botconfig.json");
 
 const Logger = require("./src/logging");
 const logger = new Logger(process.env.BOT_USERNAME);
+
+const tmi = require('tmi.js');
 
 const handler = require("./src/handler");
 
