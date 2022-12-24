@@ -1,0 +1,21 @@
+{
+  "name": "stinkbot-twitch",
+  "version": "0.0.1",
+  "description": "A chat bot for my twitch stream.",
+  "author": "silly_putty_enjoyer <silly_putty_enjoyer@proton.me>",
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DP44/stinkbot-twitch.git"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "tmi.js": "^1.8.5"
+  },
+  "devDependencies": {}
+}
