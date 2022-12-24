@@ -1,6 +1,9 @@
 # Bot config file
 # botconfig.json
 
+# jsdoc generated shit
+jsdoc/
+
 # Logs
 logs
 *.log
