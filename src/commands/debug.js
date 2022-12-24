@@ -38,7 +38,11 @@ class Test extends Command {
    * @param {object} args The arguments passed to the command.
    */
   logic(channel, userstate, args) {
-    console.log(args.length === 0);
+    if (userstate.username !== process.env.CHANNEL_NAME) {
+      global.client.say(channel, "You can't use that command!");
+      return;
+    }
+    console.log(userstate);
   }
 }
 
