@@ -7,15 +7,16 @@ const logger = new Logger(process.env.BOT_USERNAME);
 
 const handler = require("./src/handler.js")
 
-const client = new tmi.Client({
+// Store our bot's client as a global variable just to make things easier on us.
+global.client = new tmi.Client({
   logger: logger,
-  options: { 
-    debug: true, 
+  options: {
+    debug: true,
   },
 
   connection: {
     reconnect: true,
-    secure: true
+    secure: true,
   },
 
   identity: {
@@ -26,18 +27,15 @@ const client = new tmi.Client({
   channels: [process.env.CHANNEL_NAME],
 });
 
-client.connect();
-
-// Store our bot's client as a global variable just to make things easier on us.
-global.client = client;
+global.client.connect();
 
 // Fired when the client connects to the chat server.
-client.on("connected", (address, port) => {
+global.client.on("connected", (address, port) => {
   global.commands = handler.initializeCommands();
 });
 
 // Fired whenever a chat, action or whisper is received.
-client.on("message", (channel, userstate, message, self) => {
+global.client.on("message", (channel, userstate, message, self) => {
   if (self || !message.startsWith("-")) {
     return;
   }
