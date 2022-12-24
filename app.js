@@ -15,6 +15,7 @@ global.client = new tmi.Client({
   logger: logger,
   options: {
     debug: true,
+    messagesLogLevel: "chat",
   },
 
   connection: {
