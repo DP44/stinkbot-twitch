@@ -37,7 +37,7 @@ class Eightball extends Command {
    * @param {object} args The arguments passed to the command.
    */
   logic(channel, userstate, args) {
-    if (!!args) {
+    if (args == "") {
       global.client.say(channel, 
         `@${userstate.username} Are you really telling me to predict NOTHING?`)
       return;
