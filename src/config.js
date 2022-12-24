@@ -1,17 +1,21 @@
 const fs = require("fs");
 
-// const Logger = require("./logging");
-// const logger = new Logger("Config Handler");
-
-// TODO: create filestream and do reading+writing to that.
+/**
+ * A class for handling a json config.
+ * @todo Use a file stream for reading and writing.
+ */
 class Config {
+  /**
+   * Creates a config instance
+   * @param {string} file The config file.
+   */
   constructor(file) {
     this.file = file;
     this.data = this.readConfig();
   }
 
   /**
-   * @description Reads the config file.
+   * Reads the config file.
    * @returns {object} The config data.
    */
   readConfig() {
@@ -19,7 +23,7 @@ class Config {
   }
 
   /**
-   * @description Writes to the config file.
+   * Writes to the config file.
    */
   writeConfig() {
     fs.writeFileSync(this.file, JSON.stringify(this.data, null, 2));

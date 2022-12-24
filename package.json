@@ -7,7 +7,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "jsdoc": "jsdoc -c jsdoc.json"
   },
   "repository": {
     "type": "git",
@@ -17,5 +17,7 @@
     "dotenv": "^16.0.3",
     "tmi.js": "^1.8.5"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "jsdoc": "^4.0.0"
+  }
 }

@@ -1,10 +1,10 @@
 require('dotenv').config();
 
-const Config = require("./src/config");
-global.config = new Config("botconfig.json");
+global.errors = require("./src/errors");
+global.config = new (require("./src/config"))("botconfig.json");
 
 const Logger = require("./src/logging");
-const logger = new Logger(process.env.BOT_USERNAME);
+const logger = new Logger("Client");
 
 const tmi = require('tmi.js');
 
@@ -13,6 +13,7 @@ const handler = require("./src/handler");
 // Store our bot's client as a global variable just to make things easier on us.
 global.client = new tmi.Client({
   logger: logger,
+  
   options: {
     debug: true,
     messagesLogLevel: "chat",
@@ -50,5 +51,11 @@ global.client.on("message", (channel, userstate, message, self) => {
   const args = message.slice(1).split(" ");
   const command = args.shift().toLowerCase();
 
-  handler.handleCommand(channel, userstate, command, args);
+  handler.invokeCommand(channel, userstate, command, args);
+});
+
+// TODO: Move these events somewhere else.
+
+global.client.on("raided", (channel, username, viewers) => {
+  global.client.say(channel, `${username} just gave me ${viewers} new stinkers :DD`);
 });
