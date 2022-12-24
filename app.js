@@ -42,10 +42,11 @@ global.client.on("connected", (address, port) => {
 
 // Fired whenever a chat, action or whisper is received.
 global.client.on("message", (channel, userstate, message, self) => {
-  if (self || !message.startsWith("-")) {
+  if (self || !message.startsWith("!")) {
     return;
   }
 
+  // TODO: Parse quotes and shit
   const args = message.slice(1).split(" ");
   const command = args.shift().toLowerCase();
 

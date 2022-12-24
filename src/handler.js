@@ -14,13 +14,14 @@ const initializeCommands = () => {
   // TODO: Find better way of doing this.
   return {
     // General
-
+    "help": new general.Help(),
     // Fun
     "8ball": new fun.Eightball(),
     // Utility
     "ping": new utility.Ping(),
     // Debug
     "echo": new debug.Echo(),
+    "test": new debug.Test(),
   };
 };
 
@@ -37,7 +38,7 @@ const handleCommand = (channel, userstate, command, args) => {
     return;
   }
 
-  logger.debug(`command: "${command}" called with args: "${args}"`);
+  logger.debug(`command: "${command}" called with args: "${args}" (arg count: ${args.length})`);
 
   // TODO: Add proper exception handling.
   try {

@@ -5,7 +5,7 @@ class Ping extends Command {
    * @description A simple ping command.
    */
   constructor() {
-    super("ping");
+    super("ping", "A simple test command that responds with \"pong\".");
   }
 
   /**

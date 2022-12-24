@@ -2,10 +2,10 @@ const Command = require("../command");
 
 class Eightball extends Command {
   /**
-   * @description A command which repeats whatever you give it.
+   * @description A simple 8ball command.
    */
   constructor() {
-    super("8ball");
+    super("8ball", "A simple 8ball command.", "[WHATEVER THE FUCK]");
   }
 
   /**
