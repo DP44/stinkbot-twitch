@@ -16,7 +16,6 @@ const initializeCommands = () => {
     // General
 
     // Fun
-    "woah": new fun.Woah(),
     "8ball": new fun.Eightball(),
     // Utility
     "ping": new utility.Ping(),

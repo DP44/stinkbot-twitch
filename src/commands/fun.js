@@ -1,27 +1,6 @@
 const Command = require("../command");
 const constants = require("../constants");
 
-class Woah extends Command {
-  /**
-   * @description A command which repeats whatever you give it.
-   */
-  constructor() {
-    super("woah");
-  }
-
-  logic(channel, userstate, args) {
-    // stupid shit
-    let i = 1;
-    let interval = setInterval(() => {
-      if (i >= 5) {
-        clearInterval(interval);
-      }
-      global.client.say(channel, "CoolStoryBob ".repeat(i));
-      i++;
-    }, 1100);
-  }
-}
-
 class Eightball extends Command {
   /**
    * @description A command which repeats whatever you give it.
@@ -45,12 +24,6 @@ class Eightball extends Command {
       return;
     }
 
-    // stupid shitpost
-    if (` ${args} `.includes(" jeepy ") && ` ${args} `.includes(" pb ")) {
-      global.client.say(channel, `@${userstate.username} No.`);
-      return;
-    }
-
     const message = constants.EIGHTBALL_MESSAGES[Math.floor(
       Math.random() * constants.EIGHTBALL_MESSAGES.length)];
     global.client.say(channel, `@${userstate.username} ${message}`);
@@ -58,6 +31,5 @@ class Eightball extends Command {
 }
 
 module.exports = {
-  Woah,
   Eightball,
 };

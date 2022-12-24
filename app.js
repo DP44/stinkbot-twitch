@@ -5,7 +5,7 @@ const tmi = require('tmi.js');
 const Logger = require("./src/logging");
 const logger = new Logger(process.env.BOT_USERNAME);
 
-const handler = require("./src/handler.js")
+const handler = require("./src/handler");
 
 // Store our bot's client as a global variable just to make things easier on us.
 global.client = new tmi.Client({
@@ -26,7 +26,6 @@ global.client = new tmi.Client({
 
   channels: [
     process.env.CHANNEL_NAME,
-    "jeepygmi",
   ],
 });
 
