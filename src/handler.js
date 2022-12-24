@@ -16,12 +16,12 @@ const initializeCommands = () => {
     // General
 
     // Fun
-
+    "woah": new fun.Woah(),
+    "8ball": new fun.Eightball(),
     // Utility
-    ping: new utility.Ping(),
+    "ping": new utility.Ping(),
     // Debug
-    test: new debug.Test(),
-    echo: new debug.Echo(),
+    "echo": new debug.Echo(),
   };
 };
 
@@ -40,7 +40,18 @@ const handleCommand = (channel, userstate, command, args) => {
 
   logger.debug(`command: "${command}" called with args: "${args}"`);
 
-  global.commands[command].logic(channel, userstate, args);
+  // TODO: Add proper exception handling.
+  try {
+    if (commands[command] === undefined) {
+      global.client.say(channel, `@${userstate.username} That command doesn't exist!`);
+      return;
+    }
+    
+    global.commands[command].logic(channel, userstate, args);
+  } catch (ex) {
+    logger.error(ex);
+    global.client.say(channel, "SOMETHING FUCKED UP DAMNIT");
+  }
 };
 
 module.exports = {

@@ -1,18 +1,5 @@
 const Command = require("../command");
 
-class Test extends Command {
-  /**
-   * @description A command which repeats whatever you give it.
-   */
-  constructor() {
-    super("test");
-  }
-
-  logic(channel, userstate, args) {
-    this.logger.info("a");
-  }
-}
-
 class Echo extends Command {
   /**
    * @description A command which repeats whatever you give it.
@@ -21,7 +8,7 @@ class Echo extends Command {
     super("echo");
   }
 
-    /**
+  /**
    * @description The command's logic.
    * @param {string} channel The channel the command was invoked in.
    * @param {tmi.ChatUserstate} userstate The invoker's Userstate.
@@ -33,6 +20,5 @@ class Echo extends Command {
 }
 
 module.exports = {
-  Test,
   Echo,
 };
