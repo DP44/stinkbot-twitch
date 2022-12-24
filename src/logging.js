@@ -1,5 +1,6 @@
 class Logger {
   /**
+   * @description A basic logging class.
    * @param {string} name The logger name.
    * @example
    * const logger = new Logger("Example Logger");

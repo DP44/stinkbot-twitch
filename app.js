@@ -28,13 +28,16 @@ const client = new tmi.Client({
 
 client.connect();
 
+// Store our bot's client as a global variable just to make things easier on us.
 global.client = client;
 
+// Fired when the client connects to the chat server.
 client.on("connected", (address, port) => {
   global.commands = handler.initializeCommands();
 });
 
-client.on("message", (channel, tags, message, self) => {
+// Fired whenever a chat, action or whisper is received.
+client.on("message", (channel, userstate, message, self) => {
   if (self || !message.startsWith("-")) {
     return;
   }
@@ -42,5 +45,5 @@ client.on("message", (channel, tags, message, self) => {
   const args = message.slice(1).split(" ");
   const command = args.shift().toLowerCase();
 
-  handler.handleCommand(channel, tags, command, args);
+  handler.handleCommand(channel, userstate, command, args);
 });
